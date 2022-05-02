@@ -1,0 +1,23 @@
+connector:
+  name: ws_github
+  identifier: ws_github
+  description:
+  orgIdentifier: default
+  projectIdentifier: DevOps_Team
+  type: Github
+  spec:
+    url: https://github.com/ws459386
+    validationRepo: helloworld
+    authentication:
+      type: Http
+      spec:
+        type: UsernameToken
+        spec:
+          username: ws459386
+          tokenRef: ws_github
+    apiAccess:
+      type: Token
+      spec:
+        tokenRef: ws_github
+    executeOnDelegate: false
+    type: Account
