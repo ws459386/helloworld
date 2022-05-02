@@ -158,7 +158,7 @@ pipeline:
     properties:
         ci:
             codebase:
-                connectorRef: ws_helloworld
+                connectorRef: ws_github
                 repoName: helloworld
                 build: <+input>
     flowControl:
