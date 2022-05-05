@@ -75,6 +75,7 @@ pipeline:
                                               echo Blackduck scan
                   sharedPaths:
                       - /root/.m2
+              variables: []
         - stage:
               name: Validate
               identifier: Validate
