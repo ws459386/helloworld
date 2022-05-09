@@ -37,7 +37,7 @@ pipeline:
                                             --non-recursive \
                                             exec:exec)
                                         export MVN_VERSION
-                                        if [[ "${MVN_VERSION}" == "*-SNAPSHOT*" ]] ; then
+                                        if [[ "${MVN_VERSION}" == *-SNAPSHOT* ]] ; then
                                           IsCertified=false
                                         else
                                           IsCertified=true
