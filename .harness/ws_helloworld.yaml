@@ -24,7 +24,7 @@ pipeline:
                                 spec:
                                     connectorRef: account.harnessImage
                                     image: maven:3.5.2-jdk-8-alpine
-                                    shell: Sh
+                                    shell: Bash
                                     command: |
                                         #!/bin/bash
                                         echo pom.xml is:
