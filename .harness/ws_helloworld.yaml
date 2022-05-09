@@ -26,6 +26,7 @@ pipeline:
                                     image: maven:3.5.2-jdk-8-alpine
                                     shell: Sh
                                     command: |
+                                        #!/bin/bash
                                         echo pom.xml is:
                                         cat pom.xml
                                         echo maven build
@@ -36,8 +37,15 @@ pipeline:
                                             --non-recursive \
                                             exec:exec)
                                         export MVN_VERSION
+                                        if [[ ${MVN_VERSION} == "*-SNAPSHOT*" ]] ; then
+                                          IsCertified=false
+                                        else
+                                          IsCertified=true
+                                        fi
+                                        export IsCertified
                                     outputVariables:
                                         - name: MVN_VERSION
+                                        - name: IsCertified
                                 failureStrategies: []
                           - parallel:
                                 - step:
