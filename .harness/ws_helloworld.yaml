@@ -118,6 +118,12 @@ pipeline:
                   - name: MVN_VERSION
                     type: String
                     value: <+pipeline.stages.Build.spec.execution.steps.build_hello_world.output.outputVariables.MVN_VERSION>
+                  - name: IsPR
+                    type: String
+                    value: <+trigger.prNumber>
+                  - name: IsCertified
+                    type: String
+                    value: <+pipeline.stages.Build.spec.execution.steps.build_hello_world.output.outputVariables.IsCertified>
         - stage:
               name: Promote Approval
               identifier: Promote_Approval
