@@ -84,6 +84,40 @@ pipeline:
                   sharedPaths:
                       - /root/.m2
         - stage:
+              name: Show
+              identifier: Show
+              description: ""
+              type: CI
+              spec:
+                  cloneCodebase: false
+                  infrastructure:
+                      useFromStage: Build
+                  execution:
+                      steps:
+                          - step:
+                                type: Run
+                                name: show
+                                identifier: show
+                                spec:
+                                    connectorRef: account.harnessImage
+                                    image: maven:3.5.2-jdk-8-alpine
+                                    shell: Sh
+                                    command: |
+                                        echo IsPR=${IsPR}
+                                        echo MVN_VERSION=${MVN_VERSION}
+                                        echo IsCertified=${IsCertified}
+                                failureStrategies: []
+              variables:
+                  - name: IsCertified
+                    type: String
+                    value: <+pipeline.stages.Build.spec.execution.steps.build_hello_world.output.outputVariables.IsCertified>
+                  - name: MVN_VERSION
+                    type: String
+                    value: <+pipeline.stages.Build.spec.execution.steps.build_hello_world.output.outputVariables.MVN_VERSION>
+                  - name: IsPR
+                    type: String
+                    value: <+trigger.prNumber>
+        - stage:
               name: Validate
               identifier: Validate
               type: CI
