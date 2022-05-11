@@ -113,6 +113,7 @@ pipeline:
                                         export MVN_VERSION
               when:
                   pipelineStatus: Success
+                  condition: <+pipeline.stages.build.spec.execution.steps.pipeline.stages.Build.spec.execution.steps.build_hello_world.output.outputVariables.IsCertified> == "true"
               variables:
                   - name: MVN_VERSION
                     type: String
