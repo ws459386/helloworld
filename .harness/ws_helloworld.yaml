@@ -147,7 +147,7 @@ pipeline:
                                         export MVN_VERSION
               when:
                   pipelineStatus: Success
-                  condition: <+pipeline.stages.build.spec.execution.steps.pipeline.stages.Build.spec.execution.steps.build_hello_world.output.outputVariables.IsCertified> == "true"
+                  condition: <+pipeline.stages.Show.variables.IsCertified> == "true" and <+pipeline.stages.Show.variables.IsPR> == null
               variables:
                   - name: MVN_VERSION
                     type: String
@@ -182,6 +182,9 @@ pipeline:
                                     approverInputs: []
                                 failureStrategies: []
               tags: {}
+              when:
+                  pipelineStatus: Success
+                  condition: <+pipeline.stages.Show.variables.IsCertified> == "true" and <+pipeline.stages.Show.variables.IsPR> == null
         - stage:
               name: Promote
               identifier: Promote
@@ -201,6 +204,9 @@ pipeline:
                                     command: echo promote ${MVN_VERSION}
                   infrastructure:
                       useFromStage: Build
+              when:
+                  pipelineStatus: Success
+                  condition: <+pipeline.stages.Show.variables.IsCertified> == "true" and <+pipeline.stages.Show.variables.IsPR> == null
     projectIdentifier: DevOps_Team
     orgIdentifier: default
     tags: {}
