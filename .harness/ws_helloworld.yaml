@@ -102,7 +102,7 @@ pipeline:
                                     image: maven:3.5.2-jdk-8-alpine
                                     shell: Sh
                                     command: |
-                                        echo Showing parameters
+                                        echo Showing parameters in the show step
                                         echo IsPR=${IsPR}
                                         echo MVN_VERSION=${MVN_VERSION}
                                         echo IsCertified=${IsCertified}
