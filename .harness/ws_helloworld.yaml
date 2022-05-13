@@ -106,6 +106,7 @@ pipeline:
                                         echo IsPR=${IsPR}
                                         echo MVN_VERSION=${MVN_VERSION}
                                         echo IsCertified=${IsCertified}
+                                        echo end of parameters
                                 failureStrategies: []
               variables:
                   - name: IsCertified
