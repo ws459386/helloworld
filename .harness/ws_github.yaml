@@ -1,7 +1,6 @@
 connector:
   name: ws_github
   identifier: ws_github
-  description:
   orgIdentifier: default
   projectIdentifier: DevOps_Team
   type: Github
