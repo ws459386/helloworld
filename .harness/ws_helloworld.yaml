@@ -86,7 +86,6 @@ pipeline:
         - stage:
               name: Show
               identifier: Show
-              description: ""
               type: CI
               spec:
                   cloneCodebase: false
@@ -103,6 +102,7 @@ pipeline:
                                     image: maven:3.5.2-jdk-8-alpine
                                     shell: Sh
                                     command: |
+                                        echo Showing parameters
                                         echo IsPR=${IsPR}
                                         echo MVN_VERSION=${MVN_VERSION}
                                         echo IsCertified=${IsCertified}
